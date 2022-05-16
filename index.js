@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const config = require("./config/key");
 const { User } = require("./models/User");
-
+const port = 5000;
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -22,6 +22,7 @@ app.get("/", (req, res) => res.send("Hello World!~~ "));
 
 app.get("/api/hello", (req, res) => res.send("Hello World!~~ "));
 
+// 회원가입 기능 start ======================================================
 app.post("/register", (req, res) => {
   //회원 가입 할떄 필요한 정보들을  client에서 가져오면
   //그것들을  데이터 베이스에 넣어준다.
@@ -34,7 +35,9 @@ app.post("/register", (req, res) => {
     });
   });
 });
+// 회원가입 기능 end ======================================================
 
+// 로그인 기능 start ======================================================
 app.post("/login", (req, res) => {
   //요청된 이메일을 데이터베이스에서 있는지 찾는다.
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -66,7 +69,6 @@ app.post("/login", (req, res) => {
     });
   });
 });
-
-const port = 5000;
+// 로그인 기능 end ======================================================
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
