@@ -1,1 +1,0 @@
-# portfolio-sim-s-shop
