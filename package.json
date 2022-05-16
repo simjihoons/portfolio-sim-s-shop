@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "name": "portfolio-sim-s-shop",
+  "version": "1.0.0",
+  "description": "portfolio",
+  "main": "index.js",
+  "repository": "git@github.com:simjihoons/portfolio-sim-s-shop.git",
+  "author": "simjihoons <wlgnsgit@gmail.com>",
+  "license": "ISC"
+}
