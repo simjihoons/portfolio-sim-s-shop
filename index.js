@@ -21,9 +21,9 @@ mongoose
 app.get("/", (req, res) => res.send("Hello!!"));
 
 app.post("/register", (req, res) => {
-  //회원가입 정보를 DB로 보냄
   const user = new User(req.body);
 
+  //password 암호화
   user.save((err, userInfo) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).json({ success: true });
