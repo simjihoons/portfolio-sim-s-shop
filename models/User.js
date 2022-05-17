@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: Number,
-    default: 0,
+    default: 0, // 1 : admin
   },
   token: {
     type: String,
@@ -67,6 +67,19 @@ userSchema.methods.generateToken = function (callback) {
   user.save(function (err, user) {
     if (err) return callback(err);
     return callback(null, user);
+  });
+};
+
+userSchema.statics.findByToken = function (token, callback) {
+  let user = this;
+
+  //token decode **decoded=> user._id
+  jwt.verify(token, "secretToken", function (err, decoded) {
+    //클라이언트에서 가져온  token 과 DB에 보관된 토큰 일치확인
+    user.findOne({ _id: decoded, token: token }, function (err, user) {
+      if (err) return callback(err);
+      return callback(null, user);
+    });
   });
 };
 
