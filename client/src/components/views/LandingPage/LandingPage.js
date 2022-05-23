@@ -8,7 +8,23 @@ function LandingPage() {
     });
   }, []);
 
-  return <div>LandingPage</div>;
+  return (
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100vh",
+          border: "1px solid #000",
+        }}
+      >
+        <h2>home</h2>
+      </div>
+      ;
+    </>
+  );
 }
 
 export default LandingPage;
